@@ -1,0 +1,40 @@
+2024-12-15 16:36:07 
+2024-12-15 16:36:07   .   ____          _            __ _ _
+2024-12-15 16:36:07  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2024-12-15 16:36:07 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2024-12-15 16:36:07  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2024-12-15 16:36:07   '  |____| .__|_| |_|_| |_\__, | / / / /
+2024-12-15 16:36:07  =========|_|==============|___/=/_/_/_/
+2024-12-15 16:36:07  :: Spring Boot ::                (v3.1.4)
+2024-12-15 16:36:07 
+2024-12-15 16:36:07 2024-12-15T15:36:07.526Z  INFO 1 --- [           main] c.crud.crud.application.CrudApplication  : Starting CrudApplication v0.0.1-SNAPSHOT using Java 25-ea with PID 1 (/app/app.jar started by appuser in /app)
+2024-12-15 16:36:07 2024-12-15T15:36:07.528Z  INFO 1 --- [           main] c.crud.crud.application.CrudApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-15 16:36:08 2024-12-15T15:36:08.058Z  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15 16:36:08 2024-12-15T15:36:08.100Z  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2024-12-15 16:36:08 2024-12-15T15:36:08.658Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-12-15 16:36:08 2024-12-15T15:36:08.667Z  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15 16:36:08 2024-12-15T15:36:08.668Z  INFO 1 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2024-12-15 16:36:08 2024-12-15T15:36:08.736Z  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15 16:36:08 2024-12-15T15:36:08.737Z  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1157 ms
+2024-12-15 16:36:08 2024-12-15T15:36:08.866Z  INFO 1 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-15 16:36:08 2024-12-15T15:36:08.896Z  INFO 1 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2024-12-15 16:36:08 2024-12-15T15:36:08.899Z  INFO 1 --- [           main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-12-15 16:36:08 2024-12-15T15:36:08.992Z  INFO 1 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-12-15 16:36:09 2024-12-15T15:36:09.083Z  INFO 1 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-15 16:36:09 2024-12-15T15:36:09.099Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15 16:36:09 2024-12-15T15:36:09.474Z  INFO 1 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ec7d8b3
+2024-12-15 16:36:09 2024-12-15T15:36:09.475Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15 16:36:09 2024-12-15T15:36:09.733Z  INFO 1 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-12-15 16:36:10 2024-12-15T15:36:10.184Z  INFO 1 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-15 16:36:10 2024-12-15T15:36:10.230Z  INFO 1 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-15 16:36:10 2024-12-15T15:36:10.484Z  WARN 1 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-15 16:36:10 2024-12-15T15:36:10.729Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-12-15 16:36:10 2024-12-15T15:36:10.752Z  INFO 1 --- [           main] c.crud.crud.application.CrudApplication  : Started CrudApplication in 3.554 seconds (process running for 3.94)
+2024-12-15 16:36:16 2024-12-15T15:36:16.069Z  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-15 16:36:16 2024-12-15T15:36:16.070Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-15 16:36:16 2024-12-15T15:36:16.072Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-15 16:36:08 WARNING: A restricted method in java.lang.System has been called
+2024-12-15 16:36:08 WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:file:/app/app.jar!/BOOT-INF/lib/tomcat-embed-core-10.1.13.jar!/)
+2024-12-15 16:36:08 WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+2024-12-15 16:36:08 WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+2024-12-15 16:36:08 
