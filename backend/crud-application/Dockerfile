@@ -12,18 +12,11 @@ COPY src ./src/
 
 RUN mvn clean install -DskipTests
 
-FROM openjdk:25-jdk-slim
+FROM eclipse-temurin:17-alpine
 
 WORKDIR /app
 
-RUN groupadd -r appuser && useradd -r -g appuser appuser
-
 COPY --from=build /app/target/*.jar app.jar
-
-RUN chown -R appuser:appuser /app
-
-# Switch to the non-root user
-USER appuser
 
 EXPOSE 8080
 
