@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
     mysql:
-        image: mysql:latest
+        image: localhost/mysql
         container_name: mysql-container
         restart: always
         environment:

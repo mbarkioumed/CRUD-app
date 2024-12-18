@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+    mysql-container:
+        image: mysql
+        environment:
+            MYSQL_DATABASE: "crud"
+            MYSQL_ROOT_PASSWORD: "root"
+        networks:
+            - projet
+        ports:
+            - "3307:3306"
+        volumes:
+            - my-db:/var/lib/mysql
+        deploy:
+            replicas: 2
+            resources:
+                limits:
+                    cpus: "0.75"
+                    memory: 768M
+            restart_policy:
+                condition: on-failure
+
+    backend-container:
+        image: backend-image
+        depends_on:
+            - mysql-container
+        networks:
+            - projet
+        ports:
+            - "8080:8080"
+        deploy:
+            replicas: 2
+            resources:
+                limits:
+                    cpus: "1"
+                    memory: 1024M
+            restart_policy:
+                condition: on-failure
+
+    frontend-container:
+        image: frontend-image
+        networks:
+            - projet
+        ports:
+            - "3000:80"
+        deploy:
+            replicas: 2
+            resources:
+                limits:
+                    cpus: "0.5"
+                    memory: 512M
+            restart_policy:
+                condition: on-failure
+
+networks:
+    projet:
+        driver: overlay
+
+volumes:
+    my-db:
+        driver: local
