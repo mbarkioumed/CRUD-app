@@ -13,7 +13,7 @@ export default function Home() {
     }, []);
 
     const loadUsers = async () => {
-        const result = await axios.get("${API_BASE_URL}/users");
+        const result = await axios.get(`${API_BASE_URL}/users`);
         // Fetch notes for each user
         const usersWithNotes = await Promise.all(
             result.data.map(async (user) => {

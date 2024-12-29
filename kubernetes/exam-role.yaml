@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    namespace: exam # Spécifie le namespace 'exam'
+    name: exam-role # Nom du rôle
+rules:
+    - apiGroups: [""]
+      resources: ["pods", "services", "configmaps", "secrets"] # Définir les ressources sur lesquelles ce rôle agit
+      verbs: ["get", "list", "create", "update"] # Actions autorisées (lecture, écriture, suppression)
+    - apiGroups: ["apps"]
+      resources: ["deployments", "statefulsets"]
+      verbs: ["get", "list", "create", "update"] # Actions sur les ressources liées aux applications

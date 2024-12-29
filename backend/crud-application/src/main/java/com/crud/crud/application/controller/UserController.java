@@ -66,4 +66,9 @@ public class UserController {
         // Return the notes for the user
         return user.getNotes();
     }
+
+    @GetMapping("/")
+    public String healthCheck() {
+        return "Application is running";
+    }
 }

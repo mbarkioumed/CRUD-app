@@ -19,6 +19,39 @@ spec:
                   image: mysql
                   ports:
                       - containerPort: 3306
+                  livenessProbe:
+                      exec:
+                          command:
+                              - mysqladmin
+                              - ping
+                              - -u
+                              - root
+                              - -p$(MYSQL_ROOT_PASSWORD)
+                      initialDelaySeconds: 10
+                      periodSeconds: 20
+                      failureThreshold: 3
+                  readinessProbe:
+                      exec:
+                          command:
+                              - mysqladmin
+                              - ping
+                              - -u
+                              - root
+                              - -p$(MYSQL_ROOT_PASSWORD)
+                      initialDelaySeconds: 10
+                      periodSeconds: 20
+                      failureThreshold: 3
+                  startupProbe:
+                      exec:
+                          command:
+                              - mysqladmin
+                              - ping
+                              - -u
+                              - root
+                              - -p$(MYSQL_ROOT_PASSWORD)
+                      initialDelaySeconds: 10
+                      periodSeconds: 10
+                      failureThreshold: 30
                   env:
                       - name: MYSQL_ROOT_PASSWORD
                         valueFrom:
@@ -30,6 +63,11 @@ spec:
                   volumeMounts:
                       - name: mysql-data
                         mountPath: /var/lib/mysql
+                  resources:
+                      limits:
+                          limits:
+                          memory: "512Mi" # Memory limit (maximum resource)
+                          cpu: "250m"
     volumeClaimTemplates:
         - metadata:
               name: mysql-data

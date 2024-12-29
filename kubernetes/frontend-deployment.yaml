@@ -18,3 +18,28 @@ spec:
                   image: damarcusthefifthpromax/frontend-image:latest
                   ports:
                       - containerPort: 80
+                  resources:
+                      limits:
+                          memory: "256Mi" # Memory limit (maximum resource)
+                          cpu: "250m"
+                  livenessProbe:
+                      httpGet:
+                          path: /
+                          port: 80
+                      initialDelaySeconds: 5
+                      periodSeconds: 10
+                      failureThreshold: 3
+                  readinessProbe:
+                      httpGet:
+                          path: /
+                          port: 80
+                      initialDelaySeconds: 5
+                      periodSeconds: 10
+                      failureThreshold: 3
+                  startupProbe:
+                      httpGet:
+                          path: /
+                          port: 80
+                      initialDelaySeconds: 10
+                      periodSeconds: 10
+                      failureThreshold: 30
