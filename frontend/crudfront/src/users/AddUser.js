@@ -11,13 +11,17 @@ export default function AddUser() {
 
     const { name } = user;
 
+    // Use environment variable for the API base URL
+    const API_BASE_URL =
+        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:8080/user", user);
+        await axios.post("${API_BASE_URL}/user", user);
         navigate("/");
     };
 

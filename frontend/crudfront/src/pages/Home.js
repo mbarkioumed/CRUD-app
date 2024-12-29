@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
     const [users, setUsers] = useState([]);
+    // Use environment variable for the API base URL
+    const API_BASE_URL =
+        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
     useEffect(() => {
         loadUsers();
     }, []);
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/users");
+        const result = await axios.get("${API_BASE_URL}/users");
         // Fetch notes for each user
         const usersWithNotes = await Promise.all(
             result.data.map(async (user) => {
                 const notesResult = await axios.get(
-                    `http://localhost:8080/user/${user.id}/notes`
+                    `${API_BASE_URL}/user/${user.id}/notes`
                 );
                 user.notes = notesResult.data;
                 return user;
@@ -25,7 +28,7 @@ export default function Home() {
     };
 
     const deleteUser = async (id) => {
-        await axios.delete(`http://localhost:8080/user/${id}`);
+        await axios.delete(`${API_BASE_URL}/user/${id}`);
         loadUsers();
     };
 

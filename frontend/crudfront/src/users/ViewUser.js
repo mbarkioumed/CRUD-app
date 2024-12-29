@@ -10,6 +10,9 @@ export default function ViewUser() {
     const [newNote, setNewNote] = useState({ subject: "", mark: "" }); // For the new note form
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
+    // Use environment variable for the API base URL
+    const API_BASE_URL =
+        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
     useEffect(() => {
         loadUser();
@@ -19,7 +22,7 @@ export default function ViewUser() {
     const loadUser = async () => {
         try {
             setLoading(true);
-            const result = await axios.get(`http://localhost:8080/user/${id}`);
+            const result = await axios.get(`${API_BASE_URL}/user/${id}`);
             setUser(result.data);
         } catch (error) {
             console.error("Error loading user:", error);
@@ -31,9 +34,7 @@ export default function ViewUser() {
     const loadNotes = async () => {
         try {
             setLoading(true);
-            const result = await axios.get(
-                `http://localhost:8080/user/${id}/notes`
-            );
+            const result = await axios.get(`${API_BASE_URL}/user/${id}/notes`);
             setNotes(result.data);
         } catch (error) {
             console.error("Error loading notes:", error);
@@ -49,7 +50,7 @@ export default function ViewUser() {
         }
 
         try {
-            await axios.post(`http://localhost:8080/user/${id}/notes`, newNote);
+            await axios.post(`${API_BASE_URL}/user/${id}/notes`, newNote);
             loadNotes(); // Reload notes after adding a new one
             setNewNote({ subject: "", mark: "" }); // Reset form
         } catch (error) {
