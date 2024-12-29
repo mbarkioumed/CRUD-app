@@ -4,6 +4,12 @@ FROM node:14-alpine AS build
 # Set the working directory
 WORKDIR /app
 
+# Define a build-time argument
+ARG REACT_APP_API_BASE_URL
+
+# Set an environment variable for the build
+ENV REACT_APP_API_BASE_URL=${REACT_APP_API_BASE_URL}
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
