@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: backend-deployment
+    namespace: exam
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: backend
+    template:
+        metadata:
+            labels:
+                app: backend
+        spec:
+            containers:
+                - name: backend
+                  image: damarcusthefifthpromax/backend-image:latest
+                  ports:
+                      - containerPort: 8080
+                  resources:
+                      limits:
+                          memory: "256Mi" # Memory limit (maximum resource)
+                          cpu: "500m"
+                  livenessProbe:
+                      httpGet:
+                          path: /
+                          port: 8080
+                      initialDelaySeconds: 40
+                      periodSeconds: 10
+                      failureThreshold: 5
+                  readinessProbe:
+                      httpGet:
+                          path: /
+                          port: 8080
+                      initialDelaySeconds: 10
+                      periodSeconds: 10
+                      failureThreshold: 5
+                  startupProbe:
+                      httpGet:
+                          path: /actuator/health #Spring Boot Actuator
+                          port: 8080
+                      initialDelaySeconds: 15 # Delay before starting the probe
+                      periodSeconds: 5 # How often to run the probe
+                      failureThreshold: 30 # Number of failed probes before considering the pod as failed
+                  env:
+                      - name: DB_HOST
+                        value: "mysql-service"
+                      - name: DB_USER
+                        valueFrom:
+                            secretKeyRef:
+                                name: db-credentials
+                                key: username
+                      - name: DB_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: db-credentials
+                                key: password

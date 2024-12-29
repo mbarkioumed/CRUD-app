@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: exam-role-binding
+    namespace: exam # Spécifie le namespace 'exam'
+subjects:
+    - kind: User
+      name: "Damarcus" # Nom de l'utilisateur auquel le rôle sera attribué
+      apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: exam-role # Nom du rôle que nous avons créé ci-dessus
+    apiGroup: rbac.authorization.k8s.io
